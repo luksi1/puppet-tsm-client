@@ -1,0 +1,40 @@
+{
+  "name": "luksi1/tsm",
+  "version": "0.1.0",
+  "author": "luksi1",
+  "summary": "Tivoli Storage Manager puppet module",
+  "license": "Apache-2.0",
+  "source": "https://github.com/luksi1/puppet-tsm",
+  "project_page": "https://github.com/luksi1/puppet-tsm",
+  "issues_url": "https://github.com/luksi1/puppet-tsm",
+  "dependencies": [
+    {"name": "puppetlabs-stdlib","version_requirement": ">= 4.0.0"}
+  ],
+    "requirements": [
+    {
+      "name": "pe",
+      "version_requirement": ">= 3.7.0 < 2015.4.0"
+    },
+    {
+      "name": "puppet",
+      "version_requirement": ">= 3.0.0 < 5.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+      	"5",
+      	"6",
+        "7"
+      ]
+    }
+  ]
+}
