@@ -71,5 +71,11 @@ class tsm (
   }
   validate_bool($service_manage)
 
+  anchor { 'tsm::begin': } ->
+  class { '::tsm::install': } ->
+  class { '::tsm::config': } ~>
+  class { '::tsm::service': } ->
+  anchor { 'tsm::end': }
+
 }
 
