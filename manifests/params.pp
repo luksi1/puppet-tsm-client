@@ -1,17 +1,4 @@
 class tsm::params {
-  # Packages
-  $gskcrypt_package = $architecture ? {
-    'i386'   => 'gskcrypt',
-    'amd64'  => 'gskcrypt64',
-    'x86_64' => 'gskcrypt64',
-    default  => undef,
-  }
-  $gskssl_package = $architecture ? {
-    'i386'   => 'gskssl',
-    'x86_64' => 'gskssl64',
-    default  => undef,
-  }
-
   case $::osfamily {
     'Debian'         : {
       $tivsm_ba_package = 'tivsm-ba'
