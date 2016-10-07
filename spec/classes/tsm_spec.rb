@@ -14,12 +14,7 @@ describe 'tsm', :type => :class  do
   context 'should compile' do
     it { should compile }
   end
-  context 'should contain gskcrypt64' do
-    it {is_expected.to contain_package("gskcrypt64")}
-  end
-  context 'should contain gskssl64' do
-    it {is_expected.to contain_package("gskssl64")}
-  end
+
   context 'should contain tivsm-ba' do
     it {is_expected.to contain_package("tivsm-ba")}
   end
