@@ -39,9 +39,9 @@ class tsm (
   $service_provider         = undef,
   $service_manage           = true,
   $package_manage           = true,
-  $tivsm_ba_package         = $::tsm::params::tivsm_ba_package,
+  $tivsm_ba_package         = $tsm::params::tivsm_ba_package,
   $tivsm_ba_package_ensure  = 'latest',
-  $tivsm_api_package        = $::tsm::params::tivsm_api_backup,
+  $tivsm_api_package        = $tsm::params::tivsm_api_backup,
   $tivsm_api_package_ensure = 'latest') {
   validate_string($server_name)
   validate_string($tcp_server_address)
@@ -65,6 +65,8 @@ class tsm (
   validate_absolute_path($incl_excl)
   validate_bool($service_enable)
   validate_string($service_name)
+  validate_string($tivsm_ba_package)
+  validate_string($tivsm_api_packag)
 
   if $service_provider {
     validate_string($service_provider)
