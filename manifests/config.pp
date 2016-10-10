@@ -39,7 +39,6 @@ class tsm::config inherits tsm {
   }
 
   $lines = {
-	'SErvername' => { line => "SErvername $tsm::server_name" },
 	'MANAGEDSERVICES' => { line => "MANAGEDSERVICES $tsm::managed_services" },
         'MEMORYEFFICIENTBACKUP' => { line => "MEMORYEFFICIENTBACKUP $tsm::memory_efficient_backup" },
 	'COMMMethod' => {line => "COMMMethod $tsm::comm_method" },
@@ -62,6 +61,10 @@ class tsm::config inherits tsm {
         'INCLExcl' => {line => "INCLExcl $tsm::incl_excl"}
   }
 
+  file_line {'SErvername': 
+	line => "SErvername $tsm::server_name" ,
+        multiple => 'false',
+  } ->
   create_resources(file_line, $lines, $dsm_default_options)
 
   file { '/opt/tivoli/tsm/client/ba/bin/dsm.opt':
