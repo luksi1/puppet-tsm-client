@@ -61,10 +61,12 @@ class tsm::config inherits tsm {
         'INCLExcl' => {line => "INCLExcl $tsm::incl_excl"}
   }
 
-  file_line {'SErvername': 
+  file_line {'SErvername':
+        ensure => present, 
+        path => '/opt/tivoli/tsm/client/ba/bin/dsm.sys',
 	line => "SErvername $tsm::server_name" ,
         multiple => 'false',
-  } ->
+  } 
   create_resources(file_line, $lines, $dsm_default_options)
 
   file { '/opt/tivoli/tsm/client/ba/bin/dsm.opt':
