@@ -23,13 +23,18 @@ class tsm::config inherits tsm {
     owner  => 'root',
     group  => 'root',
     mode   => '0666',
-  }
-
+  } ->
   file { '/opt/tivoli/tsm/client/ba/bin/dsm.sys':
     ensure => 'present',
     owner  => root,
     group  => root,
     mode   => '0644',
+  } -> 
+  file_line {'SErvername':
+        ensure => present, 
+        path => '/opt/tivoli/tsm/client/ba/bin/dsm.sys',
+	line => "SErvername $tsm::server_name" ,
+        multiple => 'false',
   } 
  
   $dsm_default_options = {
@@ -61,12 +66,6 @@ class tsm::config inherits tsm {
         'INCLExcl' => {line => "INCLExcl $tsm::incl_excl"}
   }
 
-  file_line {'SErvername':
-        ensure => present, 
-        path => '/opt/tivoli/tsm/client/ba/bin/dsm.sys',
-	line => "SErvername $tsm::server_name" ,
-        multiple => 'false',
-  } 
   create_resources(file_line, $lines, $dsm_default_options)
 
   file { '/opt/tivoli/tsm/client/ba/bin/dsm.opt':
