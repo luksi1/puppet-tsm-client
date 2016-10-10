@@ -39,10 +39,10 @@ class tsm (
   $service_provider         = undef,
   $service_manage           = true,
   $package_manage           = true,
-  $tivsm_ba_package         = $tsm::params::tivsm_ba_package,
+  $tivsm_ba_package         = $::tsm::params::tivsm_ba_package,
   $tivsm_ba_package_ensure  = 'latest',
-  $tivsm_api_package        = $tsm::params::tivsm_api_backup,
-  $tivsm_api_package_ensure = 'latest') {
+  $tivsm_api_package        = $::tsm::params::tivsm_api_package,
+  $tivsm_api_package_ensure = 'latest') inherits tsm::params {
   validate_string($server_name)
   validate_string($tcp_server_address)
   validate_string($node_name)
