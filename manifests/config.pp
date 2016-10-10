@@ -68,12 +68,6 @@ class tsm::config inherits tsm {
     owner => root,
     group => root,
     mode  => '0644',
-  } ->
-  augeas { "dsm.opt":
-    lens    => "Spacevars.lns",
-    incl    => "/opt/tivoli/client/ba/bin/dsm.opt",
-    changes => ["set SErvername $tsm::server_name"],
-    notify  => Service[$tsm::service_name],
-  }
+  } 
 
 }
