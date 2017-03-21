@@ -14,7 +14,7 @@ Tivoli Storage Manage (TSM) is IBM's tool for backing up (and restoring) servers
 
 ### Beginning with TSM
 To install TSM with the default parameters:
-`
+```
 class {'tsm':
   opt_server_name => 'FOO'
 }
@@ -22,13 +22,13 @@ class {'tsm':
 tsm::server{'FOO':
   tcp_server_address => 'foo.domain.com',
 }
-`
+```
 
 ## Usage
 
 ### Servers
 You can specify multiple server, for instance, in a Tivoli Data Protector, solution:
-`
+```
 class {'tsm':
   opt_server_name => 'FOO'
 }
@@ -39,4 +39,4 @@ tsm::server{'FOO':
 tsm::server{'ORCL':
   tcp_server_address => 'oraclehotel.domain.com'
 }
-`
+```
