@@ -1,9 +1,8 @@
 require 'rubygems'
 require 'puppetlabs_spec_helper/module_spec_helper'
+require 'rspec-puppet'
 
 RSpec.configure do |c|
-  c.default_facts = {
-    :hostname => 'foo.domain.com',
-    :architecture => 'amd64'
-  }
+#  c.hiera_config = 'spec/fixtures/hiera/hiera.yaml'
+  
 end

@@ -1,19 +1,6 @@
 # Class: tsm
-#
-# This module manages tsm
-#
-# Parameters: none
-#
-# Actions:
-#
-# Requires: see Modulefile
-#
-# Sample Usage:
-#
 class tsm (
-  $server_name              = undef,
-  $tcp_server_address       = undef,
-  $node_name                = undef,
+  $node_name                = $::hostname,
   $managed_services         = 'WEBCLIENT SCHEDULE',
   $memory_efficient_backup  = 'yes',
   $comm_method              = 'TCPip',
@@ -42,7 +29,12 @@ class tsm (
   $tivsm_ba_package         = $::tsm::params::tivsm_ba_package,
   $tivsm_ba_package_ensure  = 'latest',
   $tivsm_api_package        = $::tsm::params::tivsm_api_package,
-  $tivsm_api_package_ensure = 'latest') inherits tsm::params {
+  $tivsm_api_package_ensure = 'latest',
+  $dsm_sys_file             = '/opt/tivoli/tsm/client/ba/bin/dsm.sys',
+  $dsm_opt_file             = '/opt/tivoli/tsm/client/ba/bin/dsm.opt',
+  $copy_path                = $::tsm::params::copy_path
+) inherits ::tsm::params {
+
   validate_string($server_name)
   validate_string($tcp_server_address)
   validate_string($node_name)
@@ -80,4 +72,3 @@ class tsm (
   anchor { 'tsm::end': }
 
 }
-

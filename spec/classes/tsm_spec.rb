@@ -1,28 +1,29 @@
 require 'spec_helper'
 
 describe 'tsm', :type => :class  do
-  let(:server_name) {'foo'}
-  let(:tcp_server_address) {'tsm_server.domain.com'}
 
-  context 'Ubuntu should compile and contain correct packages' do
-    let(:facts) {{:osfamily => 'Debian' }}
-    it { should compile }
+  context 'Ubuntu x86_64 should contain the correct packages' do
+    let(:facts) {{:osfamily => 'Debian', :architecture => 'x86_64' }}
     it {is_expected.to contain_package("tivsm-ba")}
     it {is_expected.to contain_package("tivsm-api64")}
   end
 
-  context 'RedHat should compile and contain correct packages' do
-    let(:facts) {{:osfamily => 'RedHat' }}
-    it { should compile }
+  context 'RedHat x86_64 contain the correct packages' do
+    let(:facts) {{:osfamily => 'RedHat', :architecture => 'x86_64' }}
     it {is_expected.to contain_package("TIVsm-BA")}
     it {is_expected.to contain_package("TIVsm-API64")}
   end
 
-  context 'Suse should compile and contain correct packages' do
-    let(:facts) {{:osfamily => 'Suse' }}
-    it { should compile }
+  context 'Suse x86_64 contain the correct packages' do
+    let(:facts) {{:osfamily => 'Suse', :architecture => 'x86_64' }}
     it {is_expected.to contain_package("TIVsm-BA")}
     it {is_expected.to contain_package("TIVsm-API64")}
+  end
+
+  context 'logs files should be created' do
+    let(:facts) {{:osfamily => 'Debian', :architecture => 'x86_64' }}
+    it { is_expected.to contain_file('/opt/tivoli/tsm/client/ba/bin/inexclude_file') }
+    it { is_expected.to contain_file('/opt/tivoli/tsm/client/ba/bin/dsm.opt') }
   end
 
 end

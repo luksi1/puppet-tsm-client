@@ -1,0 +1,74 @@
+*** The following replication server connection information is automatically updated
+*** These options should not be changed manually
+REPLSERVERNAME          BKP5SKO
+   REPLTCPSERVERADDRESS vgas1544.vgregion.se
+   REPLTCPPORT          1500
+   REPLSERVERGUID       fa.b1.76.c1.de.fb.11.e5.a9.d8.5c.b9.01.99.5d.15
+
+*** end of automatically updated options
+SErvername GBG
+   *** The MYREPLICATIONServer and MYPRIMARYServername options are automatically updated and should not be changed manually
+   MYREPLICATIONServer BKP5SKO
+   MYPRIMARYServername BKP5SU
+   MANAGEDSERVICES WEBCLIENT SCHEDULE
+   MEMORYEFFICIENTBACKUP yes
+   COMMMethod		TCPip
+   TCPPort		1500
+   TCPServeraddress	bkp5su.vgregion.se
+   PASSWORDACCESS	generate
+   SCHEDMODE		POLLING
+   NODENAME		vgas0993
+   DOMAIN		ALL-LOCAL
+   TCPCLIENTPORT	1501
+   HTTPPORT		1581
+   TCPWINDOWSIZE	63
+   TCPNODELAY		no
+   RESOURCEUTIL		5
+   TXNBYTELIMIT		25600
+   ERRORLOGNAME		"/var/log/tsm/err.log"
+   SCHEDLOGNAME		"/var/log/tsm/sch.log"
+   SCHEDLOGRET		30
+   ERRORLOGRET		30
+   INCLExcl /opt/tivoli/tsm/client/ba/bin/inexclude_file
+SErvername  SU
+   MEMORYEFFICIENTBACKUP yes
+   MANAGEDSERVICES WEBCLIENT SCHEDULE
+   COMMMethod		TCPip
+   TCPPort		1500
+   TCPServeraddress	bkp5su.vgregion.se
+   PASSWORDACCESS	generate
+   SCHEDMODE		POLLING
+   NODENAME		vgas0993
+   DOMAIN		ALL-LOCAL
+   TCPCLIENTPORT	1501
+   HTTPPORT		1581
+   TCPWINDOWSIZE	63
+   TCPNODELAY		no
+   RESOURCEUTIL		5
+   TXNBYTELIMIT		25600
+   ERRORLOGNAME		"/var/log/tsm/err.log"
+   SCHEDLOGNAME		"/var/log/tsm/sch.log"
+   SCHEDLOGRET		30
+   ERRORLOGRET		30
+   INCLExcl /opt/tivoli/tsm/client/ba/bin/inexclude_file
+SErvername  SKO
+   MEMORYEFFICIENTBACKUP yes
+   MANAGEDSERVICES WEBCLIENT SCHEDULE
+   COMMMethod		TCPip
+   TCPPort		1500
+   TCPServeraddress	bkp4sko.vgregion.se
+   PASSWORDACCESS	generate
+   SCHEDMODE		POLLING
+   NODENAME		vgas0993
+   DOMAIN		ALL-LOCAL
+   TCPCLIENTPORT	1501
+   HTTPPORT		1581
+   TCPWINDOWSIZE	63
+   TCPNODELAY		no
+   RESOURCEUTIL		5
+   TXNBYTELIMIT		25600
+   ERRORLOGNAME		"/var/log/tsm/err.log"
+   SCHEDLOGNAME		"/var/log/tsm/sch.log"
+   SCHEDLOGRET		30
+   ERRORLOGRET		30
+   INCLExcl /opt/tivoli/tsm/client/ba/bin/inexclude_file

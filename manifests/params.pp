@@ -1,6 +1,7 @@
 class tsm::params {
   case $::osfamily {
     'Debian'         : {
+      $copy_path = "/bin/cp" 
       $tivsm_ba_package = 'tivsm-ba'
       $tivsm_api_package = $::architecture ? {
         'i386'   => 'tivsm-api',
@@ -16,10 +17,14 @@ class tsm::params {
         'x86_64' => 'TIVsm-API64',
         'amd64' => 'TIVsm-API64',
         default  => undef,
-      } }
+      } 
+      $copy_path = "/bin/cp"
+    }
+
     default          : {
       $tivsm_ba_package = undef
       $tivsm_api_package = undef
+      $copy_path = undef
     }
 
   }
