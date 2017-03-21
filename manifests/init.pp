@@ -1,5 +1,6 @@
 # Class: tsm
 class tsm (
+  $opt_server_name          = undef,
   $node_name                = $::hostname,
   $managed_services         = 'WEBCLIENT SCHEDULE',
   $memory_efficient_backup  = 'yes',
@@ -32,11 +33,11 @@ class tsm (
   $tivsm_api_package_ensure = 'latest',
   $dsm_sys_file             = '/opt/tivoli/tsm/client/ba/bin/dsm.sys',
   $dsm_opt_file             = '/opt/tivoli/tsm/client/ba/bin/dsm.opt',
-  $copy_path                = $::tsm::params::copy_path
+  $copy_path                = $::tsm::params::copy_path,
+  $ld_library_path          = ['/usr/local/ibm/gsk8_64/lib64','/opt/tivoli/tsm/client/api/bin64']
 ) inherits ::tsm::params {
 
   validate_string($server_name)
-  validate_string($tcp_server_address)
   validate_string($node_name)
   validate_string($managed_services)
   validate_re($memory_efficient_backup, ['^yes$', '^no$'], "Should be 'yes' or 'no'. Got $memory_efficient")

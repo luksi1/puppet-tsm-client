@@ -1,3 +1,4 @@
+#
 class tsm::service {
   if !($::tsm::service_ensure in ['running', 'stopped']) {
     fail('service_ensure parameter must be running or stopped')
