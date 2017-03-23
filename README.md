@@ -38,7 +38,7 @@ tsm::server{'FOO':
 You can specify multiple server, for instance, in a Tivoli Data Protector, solution:
 ```
 class {'tsm':
-  opt_server_name => 'FOO'
+  server_name => 'FOO'
 }
 
 tsm::server{'FOO':
