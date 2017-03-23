@@ -4,8 +4,8 @@ class tsm::service {
     fail('service_ensure parameter must be running or stopped')
   }
 
-  if $::tsm::service_manage == true {
-    service { 'dsmc':
+  if $::tsm::service_manage {
+    service { 'dsmcad':
       ensure     => $::tsm::service_ensure,
       enable     => $::tsm::service_enable,
       name       => $::tsm::service_name,

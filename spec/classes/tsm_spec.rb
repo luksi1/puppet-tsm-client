@@ -26,5 +26,10 @@ describe 'tsm', :type => :class  do
     it { is_expected.to contain_file('/opt/tivoli/tsm/client/ba/bin/dsm.opt') }
   end
 
+  context 'services should be started' do
+    let(:facts) {{:osfamily => 'Debian', :architecture => 'x86_64' }}
+    it { is_expected.to contain_service('dsmcad').with_ensure('running') }
+  end
+
 end
 
