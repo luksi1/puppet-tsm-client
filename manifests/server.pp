@@ -32,7 +32,7 @@ define tsm::server (
 
   concat::fragment { "tsm_sys_file_${server_name}":
     target  => "${::tsm::dsm_sys_file}.puppet",
-    content => template("tsm/dsm.sys.erb")
+    content => template('tsm/dsm.sys.erb')
   }
 
 }

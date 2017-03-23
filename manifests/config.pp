@@ -26,14 +26,14 @@ class tsm::config inherits tsm {
     group  => 'root',
     mode   => '0666',
   }
-  
+
   concat { "${::tsm::dsm_sys_file}.puppet":
     ensure_newline => true,
   }
 
   exec {'copy_dsm_sys':
-    command => "${::tsm::copy_path} ${::tsm::dsm_sys_file}.puppet $::tsm::dsm_sys_file",
-    subscribe => Concat["${::tsm::dsm_sys_file}.puppet"],
+    command     => "${::tsm::copy_path} ${::tsm::dsm_sys_file}.puppet ${::tsm::dsm_sys_file}",
+    subscribe   => Concat["${::tsm::dsm_sys_file}.puppet"],
     refreshonly => true,
   }
 
@@ -41,7 +41,7 @@ class tsm::config inherits tsm {
     owner   => root,
     group   => root,
     mode    => '0644',
-    content => "SERVERNAME ${::tsm::opt_server_name}",
-  } 
+    content => "SERVERNAME ${::tsm::server_name}",
+  }
 
 }

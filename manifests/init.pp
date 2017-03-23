@@ -1,6 +1,6 @@
 # Class: tsm
 class tsm (
-  $opt_server_name          = undef,
+  $server_name              = undef,
   $node_name                = $::hostname,
   $managed_services         = 'WEBCLIENT SCHEDULE',
   $memory_efficient_backup  = 'yes',
@@ -40,15 +40,15 @@ class tsm (
   validate_string($server_name)
   validate_string($node_name)
   validate_string($managed_services)
-  validate_re($memory_efficient_backup, ['^yes$', '^no$'], "Should be 'yes' or 'no'. Got $memory_efficient")
-  validate_re($comm_method, ['^TCPip$', '^SHAREdmem$'], "Should be 'TCPip' or 'SSHAREdmem'. Got $comm_method.")
+  validate_re($memory_efficient_backup, ['^yes$', '^no$'], "Should be 'yes' or 'no'. Got ${memory_efficient_backup}")
+  validate_re($comm_method, ['^TCPip$', '^SHAREdmem$'], "Should be 'TCPip' or 'SSHAREdmem'. Got ${comm_method}.")
   validate_numeric($tcp_port)
-  validate_re($password_access, ['^generate$', '^prompt$'], "Should be 'generate' or 'prompt'. Got $password_access")
-  validate_re($sched_mode, ['^POLLING$', '^PROMPTED$'], "Should be 'POLLING' or 'PROMPTED'. Got $sched_mode.")
+  validate_re($password_access, ['^generate$', '^prompt$'], "Should be 'generate' or 'prompt'. Got ${password_access}")
+  validate_re($sched_mode, ['^POLLING$', '^PROMPTED$'], "Should be 'POLLING' or 'PROMPTED'. Got ${sched_mode}.")
   validate_array($domain)
   validate_numeric($tcp_client_port)
   validate_numeric($tcp_window_size)
-  validate_re($tcp_no_delay, ['^yes$', '^no$'], "Should be 'yes' or 'no'. Got $tcp_no_delay")
+  validate_re($tcp_no_delay, ['^yes$', '^no$'], "Should be 'yes' or 'no'. Got ${tcp_no_delay}")
   validate_numeric($resource_util)
   validate_numeric($txn_byte_limit)
   validate_absolute_path($error_log_name)
@@ -59,7 +59,7 @@ class tsm (
   validate_bool($service_enable)
   validate_string($service_name)
   validate_string($tivsm_ba_package)
-  validate_string($tivsm_api_packag)
+  validate_string($tivsm_api_package)
 
   if $service_provider {
     validate_string($service_provider)
