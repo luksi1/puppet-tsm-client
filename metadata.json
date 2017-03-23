@@ -4,11 +4,12 @@
   "author": "luksi1",
   "summary": "Tivoli Storage Manager puppet module",
   "license": "Apache-2.0",
-  "source": "https://github.com/luksi1/puppet-tsm",
-  "project_page": "https://github.com/luksi1/puppet-tsm",
-  "issues_url": "https://github.com/luksi1/puppet-tsm",
+  "source": "https://github.com/luksi1/puppet-tsm-client",
+  "project_page": "https://github.com/luksi1/puppet-tsm-client",
+  "issues_url": "https://github.com/luksi1/puppet-tsm-client",
   "dependencies": [
     {"name": "puppetlabs-stdlib","version_requirement": ">= 4.0.0"}
+    {"name": "puppetlabs-concat","version_requirement": ">= 2.2.0"}
   ],
     "requirements": [
     {
