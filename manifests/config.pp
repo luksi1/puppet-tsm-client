@@ -1,3 +1,4 @@
+#
 class tsm::config inherits tsm {
 
   file { $::tsm::incl_excl:
@@ -33,10 +34,10 @@ class tsm::config inherits tsm {
   }
 
   file { '/opt/tivoli/tsm/client/ba/bin/dsm.opt':
-    owner => root,
-    group => root,
-    mode  => '0644',
-    content => $::tsm::default_server_name,
+    owner   => root,
+    group   => root,
+    mode    => '0644',
+    content => $::tsm::opt_server_name,
   } 
 
 }
