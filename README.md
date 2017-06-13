@@ -32,7 +32,7 @@ tsm::server{'FOO':
 }
 ```
 
-This will create a dsm.opt file with the entry ```SERVERNAME foo``` and a dsm.sys file with the an entry called FOO, pointing to the TCP address 'foo.domain.com', which should be your TSM server.
+This will create a dsm.opt file with the entry ```SERVERNAME foo``` and a dsm.sys file with the an entry called ```SERVERNAME FOO```, pointing to the your TSM server located at 'foo.domain.com'.
 
 ## Usage
 
@@ -61,3 +61,7 @@ Whether or not your client can access the TSM server. Returns true or false
 
 ### tsm_filesystems
 Returns a hash of: filesystem => last incremental backup date
+
+## Notes
+
+This module supports updates from your Tivoli Storage Manager server. For instance, in replication scenarios, you will receive updates to your dsm.sys file with entries, such as  ```MYREPLICATEIONServer``` and ```MYPRIMARYServername```. These entries are added dynamically by your TSM server. Simply applying a Puppet template will not suffice. This module aims to remedy this by performing a subscribe function, so that the original dsm.sys file only changes when your Puppet content changes. 
