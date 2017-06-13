@@ -21,7 +21,7 @@ See more on these under "Facter Variables"
 - TSM packages (including gskcrypt and gskssl)
 
 ### Beginning with TSM
-To install TSM with the default parameters:
+To install the TSM client with the default parameters:
 ```
 class {'tsm':
   server_name => 'FOO'
@@ -32,10 +32,12 @@ tsm::server{'FOO':
 }
 ```
 
+This will create a dsm.opt file with the entry ```SERVERNAME foo``` and a dsm.sys file with the an entry called FOO, pointing to the TCP address 'foo.domain.com', which should be your TSM server.
+
 ## Usage
 
 ### Servers
-You can specify multiple server, for instance, in a Tivoli Data Protector, solution:
+You can specify multiple servers, for instance, in a Tivoli Data Protector, solution:
 ```
 class {'tsm':
   server_name => 'FOO'
