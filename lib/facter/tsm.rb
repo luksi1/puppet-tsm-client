@@ -29,7 +29,7 @@ Facter.add(:tsm_filesystems) do
   setcode do
     h = Hash.new
     if tsm_access
-      last_incremental_date,filesystem_type,replication,filespace_name = %r{^\s+\d+\s+(\d{4}.\d{2}.\d{2}\s\d{2}.\d{2}.\d{2})\s+(\S+)\s+(\S+)\s+(\S+).*$}.match(tsm_q).captures
+      last_incremental_date,filesystem_type,filespace_name = %r{^\s+\d+\s+(\d{4}.\d{2}.\d{2}\s\d{2}.\d{2}.\d{2})\s+(\S+)\s+(\S+)\s+.*$}.match(tsm_q).captures
       h[filespace_name] = last_incremental_date
     end
     h
