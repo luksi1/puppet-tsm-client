@@ -20,11 +20,6 @@ describe 'tsm', :type => :class  do
     it {is_expected.to contain_package("TIVsm-API64")}
   end
 
-  context 'dsm.sys should be configured correctly' do
-    let(:facts) {{:osfamily => 'Debian', :architecture => 'x86_64', :hostname => 'foo' }}
-    it {should contain_file('/opt/tivoli/tsm/client/ba/bin/dsm.sys').with_content("NODENAME foo")}
-  end
-
   context 'logs files should be created' do
     let(:facts) {{:osfamily => 'Debian', :architecture => 'x86_64' }}
     it { is_expected.to contain_file('/opt/tivoli/tsm/client/ba/bin/inexclude_file') }
