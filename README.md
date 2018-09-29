@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/luksi1/puppet-tsm-client.svg?branch=master)](https://travis-ci.org/luksi1/puppet-tsm-client)
+
 # tsm
 Puppet module for configuring, installing and starting Tivoli Storage Manager's client
 
