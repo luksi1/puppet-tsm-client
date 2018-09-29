@@ -3,4 +3,4 @@ fixtures:
     'stdlib'  : 'https://github.com/puppetlabs/puppetlabs-stdlib.git'
     'concat' : 'https://github.com/puppetlabs/puppetlabs-concat.git'
   symlinks:
-    "mule": "#{source_dir}"
+    "tsm": "#{source_dir}"
