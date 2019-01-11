@@ -23,7 +23,6 @@ class tsm::params {
         default  => undef,
       }
     }
-
     'RedHat', 'Suse' : {
       $tivsm_ba_package = 'TIVsm-BA'
       $tivsm_api_package = $::architecture ? {
@@ -46,8 +45,16 @@ class tsm::params {
       }
       $copy_path = '/bin/cp'
     }
-
-    default          : {
+    'Solaris' : {
+      $gskcrypt_package = undef
+      $gskssl_package = undef
+      $tivsm_ba_package = undef
+      $tivsm_api_package = undef
+      $copy_path = '/usr/bin/cp'
+    }
+    default : {
+      $gskcrypt_package = undef
+      $gskssl_package = undef
       $tivsm_ba_package = undef
       $tivsm_api_package = undef
       $copy_path = undef
