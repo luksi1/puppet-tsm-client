@@ -9,7 +9,20 @@ class tsm::params {
         'x86_64' => 'tivsm-api64',
         'amd64' => 'tivsm-api64',
         default  => undef,
-      } }
+      }
+      $gskssl_package = $::architecture ? {
+        'i386'   => 'gskssl',
+        'x86_64' => 'gskssl64',
+        'amd64' => 'gskssl64',
+        default  => undef,
+      }
+      $gskcrypt_package = $::architecture ? {
+        'i386'   => 'gskcrypt',
+        'x86_64' => 'gskcrypt64',
+        'amd64' => 'gskcrypt64',
+        default  => undef,
+      }
+    }
 
     'RedHat', 'Suse' : {
       $tivsm_ba_package = 'TIVsm-BA'
@@ -17,6 +30,18 @@ class tsm::params {
         'i386'   => 'TIVsm-API',
         'x86_64' => 'TIVsm-API64',
         'amd64' => 'TIVsm-API64',
+        default  => undef,
+      }
+      $gskssl_package = $::architecture ? {
+        'i386'   => 'gskssl',
+        'x86_64' => 'gskssl64',
+        'amd64' => 'gskssl64',
+        default  => undef,
+      }
+      $gskcrypt_package = $::architecture ? {
+        'i386'   => 'gskcrypt',
+        'x86_64' => 'gskcrypt64',
+        'amd64' => 'gskcrypt64',
         default  => undef,
       }
       $copy_path = '/bin/cp'
