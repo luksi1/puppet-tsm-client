@@ -13,14 +13,14 @@ class tsm::config inherits tsm {
     owner  => 'root',
     group  => 'root',
     mode   => '0666',
-  } ->
-  file { $::tsm::error_log_name:
+  }
+  -> file { $::tsm::error_log_name:
     ensure => 'present',
     owner  => 'root',
     group  => 'root',
     mode   => '0666',
-  } ->
-  file { $::tsm::sched_log_name:
+  }
+  -> file { $::tsm::sched_log_name:
     ensure => 'present',
     owner  => 'root',
     group  => 'root',
