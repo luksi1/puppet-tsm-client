@@ -5,12 +5,16 @@ begin
   kernel = Facter.value(:kernel)
   if kernel == 'Linux'
     if File.exist?('/usr/bin/dsmc')
-      tsm_q = Facter::Util::Resolution.exec('/usr/bin/dsmc q fi -date=5 -time=3 < /dev/null')
-      tsm_access = if $CHILD_STATUS.exitstatus.zero?
-                     true
-                   else
-                     false
-                   end
+      begin
+        tsm_q = Facter::Core::Execution.execute('/usr/bin/dsmc q fi -date=5 -time=3 < /dev/null', options = {:timeout => 5})
+        tsm_access = if $CHILD_STATUS.exitstatus.zero?
+                       true
+                     else
+                       false
+                     end
+      rescue Facter::Core::Execution::ExecutionFailure
+        tsm_access = false
+      end
     else
       tsm_access = false
     end
