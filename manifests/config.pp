@@ -12,19 +12,7 @@ class tsm::config inherits tsm {
     ensure => 'directory',
     owner  => 'root',
     group  => 'root',
-    mode   => '0666',
-  }
-  -> file { $::tsm::error_log_name:
-    ensure => 'present',
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0666',
-  }
-  -> file { $::tsm::sched_log_name:
-    ensure => 'present',
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0666',
+    mode   => '0755',
   }
 
   concat { "${::tsm::dsm_sys_file}.puppet":

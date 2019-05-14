@@ -15,7 +15,7 @@ class tsm (
   $tcp_no_delay             = 'no',
   $resource_util            = '5',
   $txn_byte_limit           = '25600',
-  $log_dir                  = '/var/log',
+  $log_dir                  = '/var/log/tsm',
   $error_log_name           = '/var/log/tsm/err.log',
   $sched_log_name           = '/var/log/tsm/sched.log',
   $sched_log_ret            = '30',
