@@ -41,10 +41,14 @@ class tsm (
   Optional[Array] $ld_library_path                     = ['/usr/local/ibm/gsk8_64/lib64','/opt/tivoli/tsm/client/api/bin64']
 ) inherits ::tsm::params {
 
-  anchor { 'tsm::begin': }
-  -> class { '::tsm::install': }
-  -> class { '::tsm::config': }
-  ~> class { '::tsm::service': }
-  -> anchor { 'tsm::end': }
+  contain tsm::install
+  contain tsm::config
+  contain tsm::service
+
+  Class['::tsm::install']
+  -> Class['::tsm::config']
+  ~> Class['::tsm::service']
+
+
 
 }
