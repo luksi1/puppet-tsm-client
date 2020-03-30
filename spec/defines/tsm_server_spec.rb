@@ -21,6 +21,7 @@ describe 'tsm::server' do
         hostname: 'foo',
         osfamily: 'Debian',
         architecture: 'x86_64',
+        operatingsystem: 'Ubuntu',
       }
     end
 
