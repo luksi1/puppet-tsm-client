@@ -1,74 +1,45 @@
 # Class: tsm
 class tsm (
-  $server_name              = undef,
-  $node_name                = $::hostname,
-  $managed_services         = 'WEBCLIENT SCHEDULE',
-  $memory_efficient_backup  = 'yes',
-  $comm_method              = 'TCPip',
-  $tcp_port                 = '1500',
-  $password_access          = 'generate',
-  $sched_mode               = 'POLLING',
-  $domain                   = ['ALL-LOCAL'],
-  $tcp_client_port          = '1501',
-  $http_port                = '1581',
-  $tcp_window_size          = '63',
-  $tcp_no_delay             = 'no',
-  $resource_util            = '5',
-  $txn_byte_limit           = '25600',
-  $log_dir                  = '/var/log',
-  $error_log_name           = '/var/log/tsm/err.log',
-  $sched_log_name           = '/var/log/tsm/sched.log',
-  $sched_log_ret            = '30',
-  $error_log_ret            = '30',
-  $incl_excl                = '/opt/tivoli/tsm/client/ba/bin/inexclude_file',
-  $service_ensure           = 'running',
-  $service_enable           = true,
-  $service_name             = 'dsmcad',
-  $service_provider         = undef,
-  $service_manage           = true,
-  $package_manage           = true,
-  $gskcrypt_package         = $::tsm::params::gskcrypt_package,
-  $gskcrypt_package_ensure  = 'latest',
-  $gskssl_package           = $::tsm::params::gskssl_package,
-  $gskssl_package_ensure    = 'latest',
-  $tivsm_ba_package         = $::tsm::params::tivsm_ba_package,
-  $tivsm_ba_package_ensure  = 'latest',
-  $tivsm_api_package        = $::tsm::params::tivsm_api_package,
-  $tivsm_api_package_ensure = 'latest',
-  $dsm_sys_file             = '/opt/tivoli/tsm/client/ba/bin/dsm.sys',
-  $dsm_opt_file             = '/opt/tivoli/tsm/client/ba/bin/dsm.opt',
-  $copy_path                = $::tsm::params::copy_path,
-  $ld_library_path          = ['/usr/local/ibm/gsk8_64/lib64','/opt/tivoli/tsm/client/api/bin64']
+  String $server_name                                  = undef,
+  String $node_name                                    = $::hostname,
+  Optional[String] $managed_services                   = 'WEBCLIENT SCHEDULE',
+  Optional[Enum['yes', 'no']] $memory_efficient_backup = 'yes',
+  Optional[Enum['TCPip', 'SHAREdmem']] $comm_method    = 'TCPip',
+  Optional[Integer] $tcp_port                          = 1500,
+  Optional[String] $password_access                    = 'generate',
+  Optional[String] $sched_mode                         = 'POLLING',
+  Optional[Array] $domain                              = ['ALL-LOCAL'],
+  Optional[Integer] $tcp_client_port                   = 1501,
+  Optional[Integer] $http_port                         = 1581,
+  Optional[Integer] $tcp_window_size                   = 63,
+  Optional[Enum['yes', 'no']] $tcp_no_delay            = 'no',
+  Optional[Integer] $resource_util                     = 5,
+  Optional[Integer] $txn_byte_limit                    = 25600,
+  Optional[String] $log_dir                            = '/var/log',
+  Optional[String] $error_log_name                     = '/var/log/tsm/err.log',
+  Optional[String] $sched_log_name                     = '/var/log/tsm/sched.log',
+  Optional[Integer] $sched_log_ret                     = 30,
+  Optional[Integer] $error_log_ret                     = 30,
+  Optional[String] $incl_excl                          = '/opt/tivoli/tsm/client/ba/bin/inexclude_file',
+  Optional[Enum['running', 'stopped']] $service_ensure = 'running',
+  Optional[Boolean] $service_enable                    = true,
+  Optional[String] $service_name                       = 'dsmcad',
+  Optional[String] $service_provider                   = undef,
+  Optional[Boolean] $service_manage                    = true,
+  Optional[Boolean] $package_manage                    = true,
+  Optional[String] $gskcrypt_package                   = $::tsm::params::gskcrypt_package,
+  Optional[String] $gskcrypt_package_ensure            = 'latest',
+  Optional[String] $gskssl_package                     = $::tsm::params::gskssl_package,
+  Optional[String] $gskssl_package_ensure              = 'latest',
+  Optional[String] $tivsm_ba_package                   = $::tsm::params::tivsm_ba_package,
+  Optional[String] $tivsm_ba_package_ensure            = 'latest',
+  Optional[String] $tivsm_api_package                  = $::tsm::params::tivsm_api_package,
+  Optional[String] $tivsm_api_package_ensure           = 'latest',
+  Optional[String] $dsm_sys_file                       = '/opt/tivoli/tsm/client/ba/bin/dsm.sys',
+  Optional[String] $dsm_opt_file                       = '/opt/tivoli/tsm/client/ba/bin/dsm.opt',
+  Optional[String] $copy_path                          = $::tsm::params::copy_path,
+  Optional[Array] $ld_library_path                     = ['/usr/local/ibm/gsk8_64/lib64','/opt/tivoli/tsm/client/api/bin64']
 ) inherits ::tsm::params {
-
-  validate_string($server_name)
-  validate_string($node_name)
-  validate_string($managed_services)
-  validate_re($memory_efficient_backup, ['^yes$', '^no$'], "Should be 'yes' or 'no'. Got ${memory_efficient_backup}")
-  validate_re($comm_method, ['^TCPip$', '^SHAREdmem$'], "Should be 'TCPip' or 'SSHAREdmem'. Got ${comm_method}.")
-  validate_numeric($tcp_port)
-  validate_re($password_access, ['^generate$', '^prompt$'], "Should be 'generate' or 'prompt'. Got ${password_access}")
-  validate_re($sched_mode, ['^POLLING$', '^PROMPTED$'], "Should be 'POLLING' or 'PROMPTED'. Got ${sched_mode}.")
-  validate_array($domain)
-  validate_numeric($tcp_client_port)
-  validate_numeric($tcp_window_size)
-  validate_re($tcp_no_delay, ['^yes$', '^no$'], "Should be 'yes' or 'no'. Got ${tcp_no_delay}")
-  validate_numeric($resource_util)
-  validate_numeric($txn_byte_limit)
-  validate_absolute_path($error_log_name)
-  validate_absolute_path($sched_log_name)
-  validate_numeric($sched_log_ret)
-  validate_numeric($error_log_ret)
-  validate_absolute_path($incl_excl)
-  validate_bool($service_enable)
-  validate_string($service_name)
-  validate_string($tivsm_ba_package)
-  validate_string($tivsm_api_package)
-
-  if $service_provider {
-    validate_string($service_provider)
-  }
-  validate_bool($service_manage)
 
   anchor { 'tsm::begin': }
   -> class { '::tsm::install': }

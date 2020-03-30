@@ -6,7 +6,7 @@ begin
   if kernel == 'Linux'
     if File.exist?('/usr/bin/dsmc')
       begin
-        tsm_q = Facter::Core::Execution.execute('/usr/bin/dsmc q fi -date=5 -time=3 < /dev/null', options = {:timeout => 5})
+        tsm_q = Facter::Core::Execution.execute('/usr/bin/dsmc q fi -date=5 -time=3 < /dev/null', options = { timeout: 5 })
         tsm_access = if $CHILD_STATUS.exitstatus.zero?
                        true
                      else
