@@ -1,6 +1,6 @@
 {
   "name": "luksi1-tsm",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "author": "luksi1",
   "summary": "Tivoli Storage Manager puppet module",
   "license": "Apache-2.0",
