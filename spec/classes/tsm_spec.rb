@@ -6,6 +6,7 @@ describe 'tsm' do
       server_name: 'foo.domain.com',
     }
   end
+
   context 'Ubuntu x86_64 should contain the correct packages' do
     let(:facts) do
       {
