@@ -12,7 +12,7 @@ describe 'tsm' do
       {
         osfamily: 'Debian',
         architecture: 'x86_64',
-        operatingsystem: 'Ubuntu'
+        operatingsystem: 'Ubuntu',
       }
     end
 
@@ -28,7 +28,7 @@ describe 'tsm' do
       {
         osfamily: 'RedHat',
         architecture: 'x86_64',
-        operatingsystem: 'CentOS'
+        operatingsystem: 'CentOS',
       }
     end
 
@@ -41,7 +41,7 @@ describe 'tsm' do
       {
         osfamily: 'Suse',
         architecture: 'x86_64',
-        operatingsystem: 'SLES'
+        operatingsystem: 'SLES',
       }
     end
 
