@@ -16,7 +16,6 @@ define tsm::server (
   $tcp_no_delay             = $::tsm::tcp_no_delay,
   $resource_util            = $::tsm::resource_util,
   $txn_byte_limit           = $::tsm::txn_byte_limit,
-  $log_dir                  = $::tsm::log_dir,
   $error_log_name           = $::tsm::error_log_name,
   $sched_log_name           = $::tsm::sched_log_name,
   $sched_log_ret            = $::tsm::sched_log_ret,

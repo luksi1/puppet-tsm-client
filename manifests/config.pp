@@ -8,13 +8,6 @@ class tsm::config inherits tsm {
     mode   => '0644',
   }
 
-  file { $::tsm::log_dir:
-    ensure => 'directory',
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0755',
-  }
-
   concat { "${::tsm::dsm_sys_file}.puppet":
     ensure_newline => true,
   }

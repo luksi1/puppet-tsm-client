@@ -15,7 +15,6 @@ class tsm (
   Optional[Enum['yes', 'no']] $tcp_no_delay            = 'no',
   Optional[Integer] $resource_util                     = 5,
   Optional[Integer] $txn_byte_limit                    = 25600,
-  Optional[String] $log_dir                            = '/var/log',
   Optional[String] $error_log_name                     = '/var/log/tsm/err.log',
   Optional[String] $sched_log_name                     = '/var/log/tsm/sched.log',
   Optional[Integer] $sched_log_ret                     = 30,
